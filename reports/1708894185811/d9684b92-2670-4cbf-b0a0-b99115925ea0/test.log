@@ -1,9 +1,0 @@
-[2024-02-25 08:50:16] [1] [WARN] Reporting disabled: using no op test run registrar
-[2024-02-25 08:50:16] [1] [INFO] TEST [Log in Failure test - testIncorrectUsernameLogin] STARTED at [17:50:16 2024-02-25]
-[2024-02-25 08:50:16] [1] [INFO] Starting driver session...
-[2024-02-25 08:50:22] [1] [INFO] Driver session started.
-[2024-02-25 08:50:24] [1] [INFO] PASS: keys 'bad_username' are sent to element 'usernameField'.
-[2024-02-25 08:50:26] [1] [INFO] PASS: keys 'secret_sauce' are sent to element 'passwordField'.
-[2024-02-25 08:50:27] [1] [INFO] PASS: element 'loginBtn' is clicked.
-[2024-02-25 08:50:28] [1] [INFO] Error text: Username and password do not match any user in this service.
-[2024-02-25 08:50:28] [1] [INFO] TEST [Log in Failure test - testIncorrectUsernameLogin] PASSED at [17:50:28 2024-02-25]

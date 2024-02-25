@@ -3,4 +3,5 @@
 /workspace.xml
 .idea
 src/main/resources/_config.properties
-.target
+target
+reports
