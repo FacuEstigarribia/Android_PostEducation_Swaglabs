@@ -1,0 +1,8 @@
+[2024-02-25 03:54:10] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-25 03:54:10] [1] [INFO] TEST [Login and Cart Functionality Test - testLogin] STARTED at [00:54:10 2024-02-25]
+[2024-02-25 03:54:10] [1] [INFO] Starting driver session...
+[2024-02-25 03:54:20] [1] [INFO] Driver session started.
+[2024-02-25 03:54:22] [1] [INFO] PASS: keys 'standard_user' are sent to element 'usernameField'.
+[2024-02-25 03:54:25] [1] [INFO] PASS: keys 'secret_sauce' are sent to element 'passwordField'.
+[2024-02-25 03:54:26] [1] [INFO] PASS: element 'loginBtn' is clicked.
+[2024-02-25 03:54:27] [1] [INFO] TEST [Login and Cart Functionality Test - testLogin] PASSED at [00:54:27 2024-02-25]

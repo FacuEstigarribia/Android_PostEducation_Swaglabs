@@ -1,0 +1,5 @@
+[2024-02-25 03:22:37] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-25 03:22:37] [1] [INFO] TEST [Log in test - testLogout] STARTED at [00:22:37 2024-02-25]
+[2024-02-25 03:22:38] [1] [INFO] PASS: element 'menuBtn' is clicked.
+[2024-02-25 03:22:40] [1] [INFO] PASS: element 'logoutBtn' is clicked.
+[2024-02-25 03:22:42] [1] [INFO] TEST [Log in test - testLogout] PASSED at [00:22:42 2024-02-25]

@@ -1,0 +1,30 @@
+[2024-02-25 03:36:11] [1] [INFO] 
+============= Test configuration =============
+env=DEMO
+selenium_url=http://localhost:4723/wd/hub
+auto_screenshot=true
+project_report_directory=./reports
+max_screen_history=10
+data_provider_thread_count=1
+localization_encoding=UTF-8
+language=en_US
+selenium_url=http://localhost:4723/wd/hub
+
+------------- Driver capabilities -----------
+capabilities.deviceName=Android Emulator
+capabilities.appPackage=com.swaglabsmobileapp
+capabilities.platformVersion="14"
+capabilities.appActivity=com.swaglabsmobileapp.MainActivity
+capabilities.automationName=uiautomator2
+capabilities.platformName=Android
+capabilities.udid=emulator-5554
+capabilities.autoGrantPermissions=true
+================================================
+
+[2024-02-25 03:36:12] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-25 03:36:13] [1] [INFO] [TestNG] Running:
+  /Users/solvd/Desktop/Java/SpotifyCarina/SpotifyCarina/src/test/resources/cart_parametrization.xml
+
+[2024-02-25 03:36:13] [1] [INFO] Set thread-count=1
+[2024-02-25 03:36:13] [1] [INFO] CARINA_CORE_VERSION: 1.0.0
+[2024-02-25 03:36:13] [1] [INFO] INFO: '**************** Test execution summary ****************'.
