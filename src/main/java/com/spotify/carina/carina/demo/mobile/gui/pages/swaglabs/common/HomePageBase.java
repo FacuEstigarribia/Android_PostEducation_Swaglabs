@@ -17,7 +17,7 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract void addProductToCart(Integer index);
 
-    public abstract CartPage clickCartBtn();
+    public abstract CartPageBase clickCartBtn();
 
     public abstract MenuPage clickMenuBtn();
 

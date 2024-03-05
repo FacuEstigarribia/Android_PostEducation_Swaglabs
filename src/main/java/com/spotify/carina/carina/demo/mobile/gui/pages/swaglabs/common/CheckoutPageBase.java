@@ -17,5 +17,5 @@ public abstract class CheckoutPageBase extends AbstractPage {
 
     public abstract void typeZipCode(String zipCode);
 
-    public abstract CheckoutOverviewPage clickContinueBtn();
+    public abstract CheckoutOverviewPageBase clickContinueBtn();
 }

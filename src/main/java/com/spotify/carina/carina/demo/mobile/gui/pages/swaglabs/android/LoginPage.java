@@ -1,7 +1,9 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android;
 
 
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.HomePageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -32,6 +34,24 @@ public class LoginPage extends LoginPageBase {
         super(driver);
         setUiLoadedMarker(loginBtn);
     }
+
+
+    @Override
+    public HomePageBase login() {
+        usernameField.type(R.TESTDATA.get("username"));
+        passwordField.type(R.TESTDATA.get("password"));
+        loginBtn.click();
+        return initPage(getDriver(), HomePageBase.class);
+    }
+
+    @Override
+    public LoginPageBase failureLogin() {
+        usernameField.type(R.TESTDATA.get("username"));
+        passwordField.type(R.TESTDATA.get("bad_password"));
+        loginBtn.click();
+        return initPage(getDriver(), LoginPageBase.class);
+    }
+
 
     @Override
     public void typeUsername(String username) {

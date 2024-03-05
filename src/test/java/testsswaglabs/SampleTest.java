@@ -1,6 +1,7 @@
 package testsswaglabs;
 
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.*;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.*;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.dataprovider.IAbstractDataProvider;
 import com.zebrunner.carina.dataprovider.annotations.CsvDataSourceParameters;
@@ -15,26 +16,56 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
-public class SampleTest implements IAbstractTest, IMobileUtils, IAbstractDataProvider {
-
-
-    @Test()
-    public void testLogin(){
-        LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.typeUsername(R.TESTDATA.get("username"));
-        loginPage.typePassword(R.TESTDATA.get("password"));
-        HomePage homePage = loginPage.clickLoginBtn();
-        homePage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        assertTrue(homePage.isPageOpened(), "The home page is not opened");
-    }
+public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
 
     @Test
-    public void testIncorrectUsernameLogin(){
-        LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.typeUsername(R.TESTDATA.get("username"));
-        loginPage.typePassword(R.TESTDATA.get("bad_password"));
-        loginPage.clickLoginBtn();
-        assertEquals(loginPage.getErrorMessageLogin(), R.TESTDATA.get("error_message"), "Error! Message of error is not the same");
+    public void testFailureLogin(){
+        LoginPageBase loginPageBase = initPage(getDriver(), LoginPageBase.class);
+        loginPageBase.failureLogin();
+        assertEquals(loginPageBase.getErrorMessageLogin(), R.TESTDATA.get("error_message"), "Error! Message of error is not the expected");
+    }
+
+    @Test/*(dependsOnMethods = {"testFailureLogin"})*/
+    public void testLogin() {
+        LoginPageBase loginPageBase = initPage(getDriver(), LoginPageBase.class);
+        HomePageBase homePage = loginPageBase.login();
+        Assert.assertTrue(homePage.isPageOpened(), "The Home Page was not open");
+    }
+
+    @Test(dependsOnMethods = {"testLogin"})
+    public void testAddProductToCart(){
+
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.addProductToCart(2);
+        CartPageBase cartPage = homePage.clickCartBtn();
+        cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        Assert.assertTrue(cartPage.isPageOpened(), "The cart page is not open");
+    }
+
+    @Test(dependsOnMethods = {"testLogin"})
+    public void testCheckoutProcess(){
+
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.addProductToCart(2);
+        CartPageBase cartPage = homePage.clickCartBtn();
+        CheckoutPage checkoutPage = cartPage.clickCheckoutBtn();
+        checkoutPage.typeFirstName(R.TESTDATA.get("checkout_name"));
+        checkoutPage.typeLastName(R.TESTDATA.get("checkout_lastname"));
+        checkoutPage.typeZipCode(R.TESTDATA.get("checkout_zipcode"));
+        CheckoutOverviewPage checkoutOverviewPage = checkoutPage.clickContinueBtn();
+        checkoutOverviewPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        assertTrue(checkoutOverviewPage.isPageOpened(), "Checkout Overview page is not opened");
+
+    }
+
+    @Test(dependsOnMethods = {"testLogin", "testAddProductToCart"})
+    public void testRemoveProductFromCart() {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.addProductToCart(2);
+        CartPage cartPage = homePage.clickCartBtn();
+        cartPage.clickRemoveBtn();
+        cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        Assert.assertFalse(cartPage.isUIObjectPresent(), "The cart is not empty");
     }
 
     @Test(dependsOnMethods = {"testLogin"})
@@ -47,42 +78,5 @@ public class SampleTest implements IAbstractTest, IMobileUtils, IAbstractDataPro
     }
 
 
-
-    @Test(dependsOnMethods = {"testLogin"})
-    public void testAddProductToCart(){
-        HomePage homePage = new HomePage(getDriver());
-        homePage.addProductToCart(2);
-        CartPage cartPage = homePage.clickCartBtn();
-        cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        Assert.assertTrue(cartPage.isPageOpened(), "The cart page is not open");
-    }
-
-
-    @Test(dependsOnMethods = {"testLogin"})
-    public void testRemoveProductFromCart(){
-        HomePage homePage = new HomePage(getDriver());
-        homePage.addProductToCart(2);
-        CartPage cartPage = homePage.clickCartBtn();
-        cartPage.clickRemoveBtn();
-        cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        Assert.assertFalse(cartPage.isUIObjectPresent(), "The cart is not empty");
-    }
-
-
-    @Test(dependsOnMethods = {"testLogin"})
-    public void testCheckoutProcess(){
-        HomePage homePage = new HomePage(getDriver());
-        homePage.addProductToCart(2);
-        CartPage cartPage = homePage.clickCartBtn();
-        CheckoutPage checkoutPage = cartPage.clickCheckoutBtn();
-        checkoutPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        assertTrue(checkoutPage.isPageOpened(), "CheckoutPage is not opened");
-        checkoutPage.typeFirstName(R.TESTDATA.get("checkout_name"));
-        checkoutPage.typeLastName(R.TESTDATA.get("checkout_lastname"));
-        checkoutPage.typeZipCode(R.TESTDATA.get("checkout_zipcode"));
-        CheckoutOverviewPage checkoutOverviewPage = checkoutPage.clickContinueBtn();
-        checkoutOverviewPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        assertTrue(checkoutOverviewPage.isPageOpened(), "Checkout Overview page is not opened");
-    }
 
 }

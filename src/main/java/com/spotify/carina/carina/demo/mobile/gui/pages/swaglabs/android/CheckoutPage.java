@@ -1,5 +1,6 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android;
 
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.CheckoutOverviewPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.CheckoutPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
