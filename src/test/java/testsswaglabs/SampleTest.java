@@ -77,6 +77,15 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
         assertTrue(loginPage.isPageOpened(), "Log in page is not opened");
     }
 
+    @Test(dependsOnMethods = {"testLogin"})
+    public void testGoToSiteWithEmptyUrl(){
+        HomePage homePage = new HomePage(getDriver());
+        MenuPage menuPage = homePage.clickMenuBtn();
+        WebviewPage webviewPage = menuPage.clickWebviewBtn();
+        webviewPage.clickGoToSiteBtn();
+        assertEquals(webviewPage.getErrorMessage(), R.TESTDATA.get("webview_error_message"), "The message was not the expected");
+    }
+
 
 
 }
