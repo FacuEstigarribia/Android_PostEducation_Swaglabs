@@ -15,7 +15,7 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Cart']")
     private ExtendedWebElement iconCart;
 
-    @FindBy(xpath = "(//android.view.ViewGroup[@content-desc='test-ADD TO CART'])[2]")
+    @FindBy(xpath = "(//android.view.ViewGroup[@content-desc='test-ADD TO CART'])[%s]")
     private ExtendedWebElement productByIndex;
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Menu']")
@@ -34,8 +34,8 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     }
 
     @Override
-    public void addProductToCart(){
-        productByIndex.click();
+    public void addProductToCart(Integer index){
+        productByIndex.format(index).click();
     }
 
     @Override

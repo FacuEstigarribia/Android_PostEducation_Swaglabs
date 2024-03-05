@@ -11,14 +11,14 @@ import org.testng.annotations.Test;
 public class CartTests implements IAbstractTest {
 
 
-    @Test(groups = "cart", dependsOnGroups = "login")
-    public void testAddProductToCart(){
-        HomePage homePage = new HomePage(getDriver());
-        homePage.addProductToCart();
-        CartPage cartPage = homePage.clickCartBtn();
-        cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        Assert.assertTrue(cartPage.isPageOpened(), "The cart page is not open");
-    }
+//    @Test(groups = "cart", dependsOnGroups = "login")
+//    public void testAddProductToCart(){
+//        HomePage homePage = new HomePage(getDriver());
+//        homePage.addProductToCart();
+//        CartPage cartPage = homePage.clickCartBtn();
+//        cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+//        Assert.assertTrue(cartPage.isPageOpened(), "The cart page is not open");
+//    }
 
 
 

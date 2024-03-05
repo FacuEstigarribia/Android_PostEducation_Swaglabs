@@ -15,7 +15,7 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract boolean isCartIconPresent();
 
-    public abstract void addProductToCart();
+    public abstract void addProductToCart(Integer index);
 
     public abstract CartPage clickCartBtn();
 
