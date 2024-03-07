@@ -1,7 +1,7 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android;
 
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.CartPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.HomePageBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.CartPage;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;

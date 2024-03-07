@@ -14,6 +14,7 @@ public abstract class LoginPageBase extends AbstractPage {
     public abstract HomePageBase login();
 
     public abstract LoginPageBase failureLogin();
+
     public abstract void typeUsername(String username);
 
     public abstract void typePassword(String password);

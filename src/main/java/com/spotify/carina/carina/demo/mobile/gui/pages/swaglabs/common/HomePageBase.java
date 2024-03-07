@@ -1,6 +1,6 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common;
 
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.CartPage;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.desktop.CartPage;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.MenuPage;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
@@ -17,7 +17,8 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract void addProductToCart(Integer index);
 
-    public abstract CartPageBase clickCartBtn();
+    public abstract CartPage clickCartBtn();
+    //public abstract CartPage clickCartBtn();
 
     public abstract MenuPage clickMenuBtn();
 
