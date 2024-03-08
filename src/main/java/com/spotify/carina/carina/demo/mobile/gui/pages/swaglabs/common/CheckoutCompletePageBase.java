@@ -4,13 +4,13 @@ import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
-public abstract class CheckoutOverviewPageBase extends AbstractPage {
+public abstract class CheckoutCompletePageBase extends AbstractPage {
 
-    public CheckoutOverviewPageBase(WebDriver driver) {
+
+    protected CheckoutCompletePageBase(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
     }
 
-
-    public abstract CheckoutCompletePageBase clickFinishBtn();
+    public abstract String getOrderBeenDispatchedText(String text);
 }

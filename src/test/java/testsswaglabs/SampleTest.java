@@ -48,11 +48,11 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.addProductToCart(2);
         CartPageBase cartPage = homePage.clickCartBtn();
-        CheckoutPage checkoutPage = cartPage.clickCheckoutBtn();
+        CheckoutPageBase checkoutPage = cartPage.clickCheckoutBtn();
         checkoutPage.typeFirstName(R.TESTDATA.get("checkout_name"));
         checkoutPage.typeLastName(R.TESTDATA.get("checkout_lastname"));
         checkoutPage.typeZipCode(R.TESTDATA.get("checkout_zipcode"));
-        CheckoutOverviewPage checkoutOverviewPage = checkoutPage.clickContinueBtn();
+        CheckoutOverviewPageBase checkoutOverviewPage = checkoutPage.clickContinueBtn();
         checkoutOverviewPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         assertTrue(checkoutOverviewPage.isPageOpened(), "Checkout Overview page is not opened");
 

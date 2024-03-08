@@ -1,4 +1,4 @@
-package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android;
+package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.desktop;
 
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.CheckoutCompletePageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.CheckoutOverviewPageBase;
@@ -7,19 +7,21 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE , parentClass = CheckoutOverviewPageBase.class)
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CheckoutOverviewPageBase.class)
 public class CheckoutOverviewPage extends CheckoutOverviewPageBase {
 
 
-    @FindBy(xpath = "//android.widget.TextView[contains(@text, 'CHECKOUT: OVERVIEW')]")
-    private ExtendedWebElement checkoutOverview;
-    protected CheckoutOverviewPage(WebDriver driver) {
+    @FindBy(xpath = "//button[@data-test='finish']")
+    private ExtendedWebElement finishBtn;
+
+    public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
-        setUiLoadedMarker(checkoutOverview);
+        setUiLoadedMarker(finishBtn);
     }
 
     @Override
     public CheckoutCompletePageBase clickFinishBtn() {
-        return null;
+        finishBtn.click();
+        return initPage(getDriver(), CheckoutCompletePageBase.class);
     }
 }

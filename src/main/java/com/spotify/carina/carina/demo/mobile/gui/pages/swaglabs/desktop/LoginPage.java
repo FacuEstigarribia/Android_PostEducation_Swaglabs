@@ -40,7 +40,10 @@ public class LoginPage extends LoginPageBase{
 
     @Override
     public LoginPageBase failureLogin() {
-        return null;
+        usernameField.type(R.TESTDATA.get("username"));
+        passwordField.type(R.TESTDATA.get("bad_password"));
+        loginBtn.click();
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
@@ -62,6 +65,6 @@ public class LoginPage extends LoginPageBase{
 
     @Override
     public String getErrorMessageLogin() {
-        return null;
+        return  errorMessage.getText();
     }
 }

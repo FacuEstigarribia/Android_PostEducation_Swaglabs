@@ -14,5 +14,5 @@ public abstract class CartPageBase extends AbstractPage {
 
     public abstract void clickRemoveBtn();
 
-    public abstract CheckoutPage clickCheckoutBtn();
+    public abstract CheckoutPageBase clickCheckoutBtn();
 }

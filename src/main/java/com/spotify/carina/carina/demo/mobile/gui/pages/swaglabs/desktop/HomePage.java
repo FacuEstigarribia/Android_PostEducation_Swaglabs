@@ -1,6 +1,7 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.desktop;
 
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.MenuPage;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.CartPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.HomePageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
@@ -33,10 +34,9 @@ public class HomePage extends HomePageBase implements ICustomTypePageFactory {
     }
 
     @Override
-    public CartPage clickCartBtn() {
+    public CartPageBase clickCartBtn() {
         cartIcon.click();
-        CartPage cartPage = new CartPage(getDriver());
-        return cartPage;
+        return initPage(getDriver(), CartPageBase.class);
     }
 
     @Override

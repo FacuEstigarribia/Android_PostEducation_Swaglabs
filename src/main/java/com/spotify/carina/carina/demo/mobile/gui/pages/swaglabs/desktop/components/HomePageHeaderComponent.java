@@ -15,8 +15,11 @@ public class HomePageHeaderComponent extends AbstractUIObject {
     private ExtendedWebElement cartIcon;
 
     public HomePageHeaderComponent(WebDriver driver, SearchContext searchContext) {
+
         super(driver, searchContext);
     }
+
+
 
 
 
