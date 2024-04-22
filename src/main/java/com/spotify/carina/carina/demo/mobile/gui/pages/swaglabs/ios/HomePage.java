@@ -3,6 +3,7 @@ package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.ios;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.MenuPage;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.CartPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.HomePageBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.MenuPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -17,6 +18,9 @@ public class HomePage extends HomePageBase {
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`label == 'ADD TO CART'`][%s]")
     private ExtendedWebElement addToCartBtn;
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == 'test-Menu'`]/XCUIElementTypeOther")
+    private ExtendedWebElement menuBtn;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -41,7 +45,8 @@ public class HomePage extends HomePageBase {
     }
 
     @Override
-    public MenuPage clickMenuBtn() {
-        return null;
+    public MenuPageBase clickMenuBtn() {
+         menuBtn.click();
+         return initPage(getDriver(), MenuPageBase.class);
     }
 }

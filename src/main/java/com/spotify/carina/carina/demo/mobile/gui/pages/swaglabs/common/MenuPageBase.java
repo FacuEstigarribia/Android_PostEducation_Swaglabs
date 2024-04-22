@@ -12,7 +12,7 @@ public abstract class MenuPageBase extends AbstractPage {
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
     }
 
-    public abstract LoginPage clickLogoutBtn();
+    public abstract LoginPageBase clickLogoutBtn();
 
     public abstract WebviewPage clickWebviewBtn();
 }

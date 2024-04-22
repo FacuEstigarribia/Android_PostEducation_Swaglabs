@@ -21,6 +21,9 @@ public class LoginPage extends LoginPageBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`label == 'LOGIN'`][2]")
     private ExtendedWebElement loginBtn;
 
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`label == 'Username and password do not match any user in this service.'`]")
+    private ExtendedWebElement errorMessage;
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -35,7 +38,10 @@ public class LoginPage extends LoginPageBase {
 
     @Override
     public LoginPageBase failureLogin() {
-        return null;
+        usernameField.type(R.TESTDATA.get("username"));
+        passwordField.type(R.TESTDATA.get("bad_password"));
+        loginBtn.click();
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
@@ -55,6 +61,6 @@ public class LoginPage extends LoginPageBase {
 
     @Override
     public String getErrorMessageLogin() {
-        return null;
+        return errorMessage.getText();
     }
 }

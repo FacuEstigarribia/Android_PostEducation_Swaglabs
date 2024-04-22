@@ -1,10 +1,14 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android;
 
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.MenuPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MenuPageBase.class)
 public class MenuPage extends MenuPageBase {
 
 
@@ -20,10 +24,9 @@ public class MenuPage extends MenuPageBase {
     }
 
     @Override
-    public LoginPage clickLogoutBtn() {
+    public LoginPageBase clickLogoutBtn() {
         logoutBtn.click();
-        LoginPage loginPage = new LoginPage(getDriver());
-        return loginPage;
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override

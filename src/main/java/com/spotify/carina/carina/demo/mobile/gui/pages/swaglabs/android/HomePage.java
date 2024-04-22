@@ -2,6 +2,7 @@ package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android;
 
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.HomePageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.CartPage;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.MenuPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -46,10 +47,9 @@ public class HomePage extends HomePageBase implements IMobileUtils {
     }
 
     @Override
-    public MenuPage clickMenuBtn() {
+    public MenuPageBase clickMenuBtn() {
         menuBtn.click();
-        MenuPage menuPage = new MenuPage(getDriver());
-        return menuPage;
+        return initPage(getDriver(), MenuPageBase.class);
     }
 
 

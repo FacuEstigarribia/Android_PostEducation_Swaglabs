@@ -19,6 +19,6 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract CartPageBase clickCartBtn();
 
-    public abstract MenuPage clickMenuBtn();
+    public abstract MenuPageBase clickMenuBtn();
 
 }
