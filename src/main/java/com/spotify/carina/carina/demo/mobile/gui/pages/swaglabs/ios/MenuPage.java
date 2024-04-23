@@ -4,6 +4,7 @@ import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.LoginPag
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.WebviewPage;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.MenuPageBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.WebviewPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -14,6 +15,9 @@ public class MenuPage extends MenuPageBase {
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`label == 'LOGOUT'`]")
     private ExtendedWebElement logoutBtn;
+
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`label == 'WEBVIEW'`]")
+    private ExtendedWebElement webviewBtn;
     public MenuPage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(logoutBtn);
@@ -26,7 +30,9 @@ public class MenuPage extends MenuPageBase {
     }
 
     @Override
-    public WebviewPage clickWebviewBtn() {
-        return null;
+    public WebviewPageBase clickWebviewBtn() {
+
+        webviewBtn.click();
+        return initPage(getDriver(), WebviewPageBase.class);
     }
 }

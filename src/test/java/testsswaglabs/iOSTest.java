@@ -52,10 +52,29 @@ public class iOSTest implements IAbstractTest {
 
     @Test(dependsOnMethods = {"testLogin"})
     public void testLogout(){
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = new HomePage(getDriver());
         MenuPageBase menuPage = homePage.clickMenuBtn();
         LoginPageBase loginPage = menuPage.clickLogoutBtn();
         loginPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         assertTrue(loginPage.isPageOpened(), "Log in page is not opened");
+    }
+
+    @Test(dependsOnMethods = {"testLogin"})
+    public void testRemoveProductFromCart() {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.addProductToCart(2);
+        CartPageBase cartPage = homePage.clickCartBtn();
+        cartPage.clickRemoveBtn();
+        cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        Assert.assertFalse(cartPage.isUIObjectPresent(), "The cart is not empty");
+    }
+
+    @Test(dependsOnMethods = {"testLogin"})
+    public void testGoToSiteWithEmptyUrl(){
+        HomePageBase homePage = new HomePage(getDriver());
+        MenuPageBase menuPage = homePage.clickMenuBtn();
+        WebviewPageBase webviewPage = menuPage.clickWebviewBtn();
+        webviewPage.clickGoToSiteBtn();
+        assertEquals(webviewPage.getErrorMessage(), R.TESTDATA.get("webview_error_message"), "The message was not the expected");
     }
 }
