@@ -8,5 +8,5 @@ public abstract class DrawingPageBase extends AbstractPage {
         super(driver);
     }
 
-
+    public abstract void drawPicture();
 }

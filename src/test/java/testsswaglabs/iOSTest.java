@@ -77,4 +77,13 @@ public class iOSTest implements IAbstractTest {
         webviewPage.clickGoToSiteBtn();
         assertEquals(webviewPage.getErrorMessage(), R.TESTDATA.get("webview_error_message"), "The message was not the expected");
     }
+
+
+    @Test(dependsOnMethods = {"testLogin"})
+    public void testDrawPicture(){
+        HomePageBase homePage = new HomePage(getDriver());
+        MenuPageBase menuPage = homePage.clickMenuBtn();
+        DrawingPageBase drawingPageBase = menuPage.clickDrawingBtn();
+        drawingPageBase.drawPicture();
+    }
 }
