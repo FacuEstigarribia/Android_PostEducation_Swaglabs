@@ -15,4 +15,6 @@ public abstract class MenuPageBase extends AbstractPage {
     public abstract LoginPageBase clickLogoutBtn();
 
     public abstract WebviewPageBase clickWebviewBtn();
+
+    public abstract DrawingPageBase clickDrawingBtn();
 }

@@ -2,6 +2,7 @@ package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.ios;
 
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.LoginPage;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.WebviewPage;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.DrawingPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.MenuPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.WebviewPageBase;
@@ -18,6 +19,10 @@ public class MenuPage extends MenuPageBase {
 
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`label == 'WEBVIEW'`]")
     private ExtendedWebElement webviewBtn;
+
+    @ExtendedFindBy(iosPredicate = "label == 'DRAWING' AND name == 'test-DRAWING'")
+    private ExtendedWebElement drawingBtn;
+
     public MenuPage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(logoutBtn);
@@ -34,5 +39,11 @@ public class MenuPage extends MenuPageBase {
 
         webviewBtn.click();
         return initPage(getDriver(), WebviewPageBase.class);
+    }
+
+    @Override
+    public DrawingPageBase clickDrawingBtn() {
+        drawingBtn.click();
+        return initPage(getDriver(), DrawingPageBase.class);
     }
 }

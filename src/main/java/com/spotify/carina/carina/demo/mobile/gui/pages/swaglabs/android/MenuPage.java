@@ -1,5 +1,6 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android;
 
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.DrawingPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.MenuPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.WebviewPageBase;
@@ -34,6 +35,11 @@ public class MenuPage extends MenuPageBase {
     public WebviewPageBase clickWebviewBtn() {
         webviewBtn.click();
         return initPage(getDriver(), WebviewPageBase.class);
+    }
+
+    @Override
+    public DrawingPageBase clickDrawingBtn() {
+        return null;
     }
 
 
