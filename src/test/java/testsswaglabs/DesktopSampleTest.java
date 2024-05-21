@@ -1,9 +1,9 @@
 package testsswaglabs;
 
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.CheckoutOverviewPage;
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.CheckoutPage;
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.*;
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.desktop.CartPage;
+
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.HeaderMenuComponentBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.*;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.desktop.CartPage;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
@@ -38,7 +38,8 @@ public class DesktopSampleTest implements IAbstractTest {
     public void testAddProductToCart(){
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.addProductToCart(2);
-        CartPage cartPage = (CartPage) homePage.clickCartBtn();
+        HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
+        CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         Assert.assertTrue(cartPage.isPageOpened(), "The cart page is not open");
     }
@@ -48,7 +49,8 @@ public class DesktopSampleTest implements IAbstractTest {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.addProductToCart(2);
         homePage.addProductToCart(4);
-        CartPageBase cartPage = homePage.clickCartBtn();
+        HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
+        CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         CheckoutPageBase checkoutPage = cartPage.clickCheckoutBtn();
         checkoutPage.typeFirstName(R.TESTDATA.get("checkout_name"));
         checkoutPage.typeLastName(R.TESTDATA.get("checkout_lastname"));

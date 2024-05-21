@@ -1,18 +1,18 @@
 package testsswaglabs;
 
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.android.*;
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.common.*;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.android.HeaderMenuComponent;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.HeaderMenuComponentBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.*;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.*;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.CartPage;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.HomePage;
 import com.zebrunner.carina.core.IAbstractTest;
-import com.zebrunner.carina.dataprovider.IAbstractDataProvider;
-import com.zebrunner.carina.dataprovider.annotations.CsvDataSourceParameters;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import static org.testng.Assert.*;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
@@ -37,7 +37,8 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
 
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.addProductToCart(2);
-        CartPageBase cartPage = homePage.clickCartBtn();
+        HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
+        CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         Assert.assertTrue(cartPage.isPageOpened(), "The cart page is not open");
     }
@@ -47,7 +48,8 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
 
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.addProductToCart(2);
-        CartPageBase cartPage = homePage.clickCartBtn();
+        HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
+        CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         CheckoutPageBase checkoutPage = cartPage.clickCheckoutBtn();
         checkoutPage.typeFirstName(R.TESTDATA.get("checkout_name"));
         checkoutPage.typeLastName(R.TESTDATA.get("checkout_lastname"));
@@ -61,8 +63,8 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
     @Test(dependsOnMethods = {"testLogin", "testAddProductToCart"})
     public void testRemoveProductFromCart() {
         HomePage homePage = new HomePage(getDriver());
-        homePage.addProductToCart(2);
-        CartPage cartPage = homePage.clickCartBtn();
+        HeaderMenuComponent headerMenuComponent = homePage.getHeaderMenuComponent();
+        CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.clickRemoveBtn();
         cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         Assert.assertFalse(cartPage.isUIObjectPresent(), "The cart is not empty");
@@ -71,7 +73,8 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
     @Test(dependsOnMethods = {"testLogin"})
     public void testLogout(){
         HomePage homePage = new HomePage(getDriver());
-        MenuPageBase menuPage = homePage.clickMenuBtn();
+        HeaderMenuComponent headerMenuComponent = homePage.getHeaderMenuComponent();
+        MenuPageBase menuPage = headerMenuComponent.clickOnMenuBtn();
         LoginPageBase loginPage = menuPage.clickLogoutBtn();
         loginPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         assertTrue(loginPage.isPageOpened(), "Log in page is not opened");
@@ -80,7 +83,8 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
     @Test(dependsOnMethods = {"testLogin"})
     public void testGoToSiteWithEmptyUrl(){
         HomePage homePage = new HomePage(getDriver());
-        MenuPageBase menuPage = homePage.clickMenuBtn();
+        HeaderMenuComponent headerMenuComponent = homePage.getHeaderMenuComponent();
+        MenuPageBase menuPage = headerMenuComponent.clickOnMenuBtn();
         WebviewPageBase webviewPage = menuPage.clickWebviewBtn();
         webviewPage.clickGoToSiteBtn();
         assertEquals(webviewPage.getErrorMessage(), R.TESTDATA.get("webview_error_message"), "The message was not the expected");
