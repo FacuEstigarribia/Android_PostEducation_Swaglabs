@@ -2,6 +2,7 @@ package testsswaglabs;
 
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.android.HeaderMenuComponent;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.HeaderMenuComponentBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.ProductListComponentBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.*;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.*;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.CartPage;
@@ -36,7 +37,8 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
     public void testAddProductToCart(){
 
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.addProductToCart(2);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        productListComponent.addProductToCart(2);
         HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -47,7 +49,8 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
     public void testCheckoutProcess(){
 
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.addProductToCart(2);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        productListComponent.addProductToCart(2);
         HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         CheckoutPageBase checkoutPage = cartPage.clickCheckoutBtn();
@@ -63,7 +66,7 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
     @Test(dependsOnMethods = {"testLogin", "testAddProductToCart"})
     public void testRemoveProductFromCart() {
         HomePage homePage = new HomePage(getDriver());
-        HeaderMenuComponent headerMenuComponent = homePage.getHeaderMenuComponent();
+        HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.clickRemoveBtn();
         cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -73,7 +76,7 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
     @Test(dependsOnMethods = {"testLogin"})
     public void testLogout(){
         HomePage homePage = new HomePage(getDriver());
-        HeaderMenuComponent headerMenuComponent = homePage.getHeaderMenuComponent();
+        HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         MenuPageBase menuPage = headerMenuComponent.clickOnMenuBtn();
         LoginPageBase loginPage = menuPage.clickLogoutBtn();
         loginPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -83,7 +86,7 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
     @Test(dependsOnMethods = {"testLogin"})
     public void testGoToSiteWithEmptyUrl(){
         HomePage homePage = new HomePage(getDriver());
-        HeaderMenuComponent headerMenuComponent = homePage.getHeaderMenuComponent();
+        HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         MenuPageBase menuPage = headerMenuComponent.clickOnMenuBtn();
         WebviewPageBase webviewPage = menuPage.clickWebviewBtn();
         webviewPage.clickGoToSiteBtn();

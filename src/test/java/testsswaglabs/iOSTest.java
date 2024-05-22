@@ -1,5 +1,6 @@
 package testsswaglabs;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.HeaderMenuComponentBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.ProductListComponentBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.ios.HeaderMenuComponent;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.*;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.ios.HomePage;
@@ -31,7 +32,8 @@ public class iOSTest implements IAbstractTest {
     @Test(dependsOnMethods = {"testLogin"})
     public void testAddProductToCart(){
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.addProductToCart(2);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        productListComponent.addProductToCart(2);
         HeaderMenuComponentBase headerMenuComponent =homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -41,7 +43,8 @@ public class iOSTest implements IAbstractTest {
     @Test(dependsOnMethods = {"testLogin"})
     public void testCheckoutProcess(){
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.addProductToCart(2);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        productListComponent.addProductToCart(2);
         HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         CheckoutPageBase checkoutPage = cartPage.clickCheckoutBtn();
@@ -67,7 +70,8 @@ public class iOSTest implements IAbstractTest {
     @Test(dependsOnMethods = {"testLogin"})
     public void testRemoveProductFromCart() {
         HomePage homePage = new HomePage(getDriver());
-        homePage.addProductToCart(2);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        productListComponent.addProductToCart(2);
         HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.clickRemoveBtn();

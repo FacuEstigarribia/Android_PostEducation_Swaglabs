@@ -2,8 +2,8 @@ package testsswaglabs;
 
 
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.HeaderMenuComponentBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.ProductListComponentBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.*;
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.desktop.CartPage;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
@@ -37,7 +37,8 @@ public class DesktopSampleTest implements IAbstractTest {
     @Test(dependsOnMethods = {"testLogin"})
     public void testAddProductToCart(){
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.addProductToCart(2);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        productListComponent.addProductToCart(2);
         HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -47,8 +48,9 @@ public class DesktopSampleTest implements IAbstractTest {
     @Test(dependsOnMethods = {"testLogin"})
     public void testCheckoutProcess(){
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.addProductToCart(2);
-        homePage.addProductToCart(4);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        productListComponent.addProductToCart(2);
+        productListComponent.addProductToCart(4);
         HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         CheckoutPageBase checkoutPage = cartPage.clickCheckoutBtn();

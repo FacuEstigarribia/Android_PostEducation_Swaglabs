@@ -1,6 +1,9 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.desktop;
 
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.HeaderMenuComponentBase;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.ProductListComponentBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.desktop.HeaderMenuComponent;
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.desktop.ProductListComponent;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.MenuPage;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.CartPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.HomePageBase;
@@ -15,11 +18,12 @@ public class HomePage extends HomePageBase implements ICustomTypePageFactory {
 
     @FindBy(xpath = "//div[@data-test='primary-header']")
     private HeaderMenuComponent headerMenuComponent;
+
+    @FindBy(xpath = "//div[@data-test='inventory-list']")
+    private ProductListComponent productListComponent;
     @FindBy(xpath = "//div[@id='shopping_cart_container']")
     private ExtendedWebElement cartIcon;
 
-    @FindBy(xpath = "//div[@class='inventory_item'][%s]//button[contains(@class, btn)]")
-    private ExtendedWebElement addToCartBtnOfSelectedProduct;
     public HomePage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(cartIcon);
@@ -31,23 +35,11 @@ public class HomePage extends HomePageBase implements ICustomTypePageFactory {
     }
 
     @Override
-    public void addProductToCart(Integer index) {
-        addToCartBtnOfSelectedProduct.format(index).click();
-    }
-
-    @Override
-    public HeaderMenuComponent getHeaderMenuComponent() {
+    public HeaderMenuComponentBase getHeaderMenuComponent() {
         return headerMenuComponent;
     }
 
-//    @Override
-//    public CartPageBase clickCartBtn() {
-//        cartIcon.click();
-//        return initPage(getDriver(), CartPageBase.class);
-//    }
-//
-//    @Override
-//    public MenuPage clickMenuBtn() {
-//        return null;
-//    }
+    @Override
+    public ProductListComponentBase getProductListComponent(){return productListComponent;}
+
 }

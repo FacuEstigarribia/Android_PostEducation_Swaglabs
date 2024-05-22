@@ -1,5 +1,6 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.ios;
 
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.ProductListComponentBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.ios.HeaderMenuComponent;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.CartPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.HomePageBase;
@@ -36,14 +37,19 @@ public class HomePage extends HomePageBase {
         return cartIcon.isElementPresent();
     }
 
-    @Override
-    public void addProductToCart(Integer index) {
-        addToCartBtn.format(index).click();
-    }
+//    @Override
+//    public void addProductToCart(Integer index) {
+//        addToCartBtn.format(index).click();
+//    }
 
     @Override
     public HeaderMenuComponent getHeaderMenuComponent() {
         return headerMenuComponent;
+    }
+
+    @Override
+    public ProductListComponentBase getProductListComponent() {
+        return null;
     }
 
 //    @Override
