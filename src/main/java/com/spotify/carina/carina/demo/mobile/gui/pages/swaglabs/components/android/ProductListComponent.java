@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductListComponent extends ProductListComponentBase {
-
     private static final Log LOGGER = LogFactory.getLog(ProductListComponent.class);
     private static final String MAIN_LOCATOR = "//*[@content-desc='test-PRODUCTS']/..";
     @FindBy(xpath = MAIN_LOCATOR)

@@ -1,9 +1,0 @@
-[2024-05-27 06:53:11] [1] [WARN] Reporting disabled: using no op test run registrar
-[2024-05-27 06:53:11] [1] [INFO] TEST [SpotifyCarina - testLogin] STARTED at [15:53:11 2024-05-27]
-[2024-05-27 06:53:11] [1] [INFO] Starting driver session...
-[2024-05-27 06:53:16] [1] [INFO] Driver session started.
-[2024-05-27 06:53:16] [1] [INFO] INFO: opening url 'https://www.saucedemo.com'
-[2024-05-27 06:53:17] [1] [INFO] PASS: keys 'standard_user' are sent to element 'usernameField'.
-[2024-05-27 06:53:18] [1] [INFO] PASS: keys 'secret_sauce' are sent to element 'passwordField'.
-[2024-05-27 06:53:19] [1] [INFO] PASS: element 'loginBtn' is clicked.
-[2024-05-27 06:53:21] [1] [INFO] TEST [SpotifyCarina - testLogin] PASSED at [15:53:21 2024-05-27]
