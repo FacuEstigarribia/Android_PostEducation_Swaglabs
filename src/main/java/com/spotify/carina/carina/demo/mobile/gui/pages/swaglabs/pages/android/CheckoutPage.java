@@ -1,5 +1,6 @@
 package com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android;
 
+import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.CheckoutOverviewPageBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.CheckoutPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -44,9 +45,9 @@ public class CheckoutPage extends CheckoutPageBase {
     }
 
     @Override
-    public CheckoutOverviewPage clickContinueBtn() {
+    public CheckoutOverviewPageBase clickContinueBtn() {
         continueBtn.click();
-        return initPage(getDriver(), CheckoutOverviewPage.class);
+        return initPage(getDriver(), CheckoutOverviewPageBase.class);
     }
 
 

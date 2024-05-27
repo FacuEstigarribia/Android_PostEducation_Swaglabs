@@ -1,7 +1,7 @@
 <!DOCTYPE  suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite verbose="1" name = "Swaglabs Sample Tests">
+<suite verbose="1" name = "Saucedemo Android suite">
 
-    <test name="Sample Tests">
+    <test name="Android Tests">
         <classes>
             <class name="testsswaglabs.SampleTest"></class>
         </classes>

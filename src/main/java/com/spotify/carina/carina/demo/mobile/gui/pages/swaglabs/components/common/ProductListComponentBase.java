@@ -10,4 +10,7 @@ public abstract class ProductListComponentBase extends AbstractUIObject {
     }
 
     public abstract void addProductToCart(Integer index);
+
+    public abstract String getPriceOfSelectedProduct(Integer index);
+    public abstract String getTitleOfSelectedProduct(Integer index);
 }

@@ -33,6 +33,15 @@ public class DesktopSampleTest implements IAbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "The Home Page was not open");
     }
 
+    @Test(dependsOnMethods = {"testLogin"})
+    public void testCheckTitleOfProducts(){
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        for(int i = 1; i <= 6; i ++){
+            String aux = productListComponent.getTitleOfSelectedProduct(i);
+            assertEquals(aux, productListComponent.getTitleOfSelectedProduct(i), "The title is not the same that is expected");
+        }
+    }
 
     @Test(dependsOnMethods = {"testLogin"})
     public void testAddProductToCart(){
