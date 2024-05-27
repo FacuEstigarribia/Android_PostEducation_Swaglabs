@@ -1,0 +1,25 @@
+[2024-05-27 06:53:39] [1] [INFO] 
+============= Test configuration =============
+url=https://www.saucedemo.com
+selenium_url=http://localhost:4444/wd/hub
+auto_screenshot=true
+project_report_directory=./reports
+max_screen_history=10
+data_provider_thread_count=1
+localization_encoding=UTF-8
+language=en_US
+selenium_url=http://localhost:4444/wd/hub
+
+------------- Driver capabilities -----------
+capabilities.browserName=chrome
+================================================
+
+[2024-05-27 06:53:39] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-05-27 06:53:40] [1] [INFO] [TestNG] Running:
+  /Users/solvd/Library/Caches/JetBrains/IdeaIC2022.3/temp-testng-customsuite.xml
+
+[2024-05-27 06:53:40] [1] [INFO] Set thread-count=1
+[2024-05-27 06:53:40] [1] [INFO] CARINA_CORE_VERSION: 1.0.0
+[2024-05-27 06:53:51] [1] [INFO] INFO: '**************** Test execution summary ****************'.
+[2024-05-27 06:53:51] [1] [INFO] RESULT #1: TEST [SpotifyCarina - testLogin] PASS [screenshots=file:///Users/solvd/Desktop/Java/SpotifyCarina/SpotifyCarina/./reports/1716836019114/eec2f310-69aa-4f72-8e39-262dda6665bd/report.html | log=file:///Users/solvd/Desktop/Java/SpotifyCarina/SpotifyCarina/./reports/1716836019114/eec2f310-69aa-4f72-8e39-262dda6665bd/test.log]
+[2024-05-27 06:53:51] [1] [INFO] RESULT #2: TEST [SpotifyCarina - testCheckTitleOfProducts] PASS [log=file:///Users/solvd/Desktop/Java/SpotifyCarina/SpotifyCarina/./reports/1716836019114/051ef1ee-bf8a-4b39-9438-770055300975/test.log]

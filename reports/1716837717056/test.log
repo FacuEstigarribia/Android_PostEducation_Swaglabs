@@ -1,0 +1,32 @@
+[2024-05-27 07:21:57] [1] [INFO] 
+============= Test configuration =============
+url=https://www.saucedemo.com
+selenium_url=http://localhost:4723
+auto_screenshot=true
+project_report_directory=./reports
+max_screen_history=10
+data_provider_thread_count=1
+localization_encoding=UTF-8
+language=en_US
+selenium_url=http://localhost:4723
+
+------------- Driver capabilities -----------
+capabilities.deviceName=Android Emulator
+capabilities.appPackage=com.swaglabsmobileapp
+capabilities.platformVersion="14"
+capabilities.appActivity=com.swaglabsmobileapp.MainActivity
+capabilities.automationName=uiautomator2
+capabilities.browserName=chrome
+capabilities.platformName=Android
+capabilities.udid=emulator-5554
+capabilities.autoGrantPermissions=true
+================================================
+
+[2024-05-27 07:21:57] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-05-27 07:21:58] [1] [INFO] [TestNG] Running:
+  /Users/solvd/Library/Caches/JetBrains/IdeaIC2022.3/temp-testng-customsuite.xml
+
+[2024-05-27 07:21:58] [1] [INFO] Set thread-count=1
+[2024-05-27 07:21:58] [1] [INFO] CARINA_CORE_VERSION: 1.0.0
+[2024-05-27 07:21:59] [1] [INFO] INFO: '**************** Test execution summary ****************'.
+[2024-05-27 07:21:59] [1] [INFO] RESULT #1: TEST [SpotifyCarina - testLogin] FAIL [log=file:///Users/solvd/Desktop/Java/SpotifyCarina/SpotifyCarina/./reports/1716837717056/c995f206-aa6c-4feb-bb49-d92946e215b1/test.log]

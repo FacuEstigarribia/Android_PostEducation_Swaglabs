@@ -1,0 +1,8 @@
+[2024-05-27 07:23:40] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-05-27 07:23:40] [1] [INFO] TEST [SpotifyCarina - testLogin] STARTED at [16:23:40 2024-05-27]
+[2024-05-27 07:23:40] [1] [INFO] Starting driver session...
+[2024-05-27 07:23:45] [1] [INFO] Driver session started.
+[2024-05-27 07:23:47] [1] [INFO] PASS: keys 'standard_user' are sent to element 'usernameField'.
+[2024-05-27 07:23:49] [1] [INFO] PASS: keys 'secret_sauce' are sent to element 'passwordField'.
+[2024-05-27 07:23:50] [1] [INFO] PASS: element 'loginBtn' is clicked.
+[2024-05-27 07:23:52] [1] [INFO] TEST [SpotifyCarina - testLogin] PASSED at [16:23:52 2024-05-27]
