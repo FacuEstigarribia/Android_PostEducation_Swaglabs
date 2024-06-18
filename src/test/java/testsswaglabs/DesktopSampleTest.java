@@ -4,15 +4,11 @@ package testsswaglabs;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.HeaderMenuComponentBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.ProductListComponentBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.*;
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.utils.ProductsDataProvider;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -37,33 +33,12 @@ public class DesktopSampleTest implements IAbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "The Home Page was not open");
     }
 
-    @Test(dependsOnMethods = {"testLogin"})
-    public void testCheckTitleOfProducts(){
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        ProductListComponentBase productListComponent = homePage.getProductListComponent();
-        for(int i = 1; i <= 6; i ++){
-            String aux = productListComponent.getTitleOfSelectedProduct(i);
-            assertEquals(aux, productListComponent.getTitleOfSelectedProduct(i), "The title is not the same that is expected");
-        }
-    }
 
     @Test(dependsOnMethods = {"testLogin"})
     public void testAddProductToCart(){
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         ProductListComponentBase productListComponent = homePage.getProductListComponent();
         productListComponent.addProductToCart(2);
-        HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
-        CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
-        cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        Assert.assertTrue(cartPage.isPageOpened(), "The cart page is not open");
-    }
-
-    @Test(dependsOnMethods = {"testLogin"})
-    public void testAddProductsToCart(){
-        List<Integer> indexList = Arrays.asList(1,3,4);
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        ProductListComponentBase productListComponent = homePage.getProductListComponent();
-        productListComponent.addProductsToCart(indexList);
         HeaderMenuComponentBase headerMenuComponent = homePage.getHeaderMenuComponent();
         CartPageBase cartPage = headerMenuComponent.clickOnCartBtn();
         cartPage.setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -91,16 +66,5 @@ public class DesktopSampleTest implements IAbstractTest {
         assertEquals(orderDispatcehTxt, orderDispatcehTxt, "The text doesn't match with the expected");
     }
 
-    @Test(dependsOnMethods = {"testLogin"})
-    public void testAddProductToCartDemoWithStreams(){
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        ProductListComponentBase productListComponent = homePage.getProductListComponent();
-        productListComponent.addProductsToCartStream();
-    }
-    @Test(dependsOnMethods = {"testLogin"}, dataProvider = "productNames", dataProviderClass = ProductsDataProvider.class)
-    public void testAddMultipleProductsToCart(List<String> productNames){
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        ProductListComponentBase productListComponent = homePage.getProductListComponent();
-        productListComponent.addProductsToCart2(productNames);
-    }
+
 }

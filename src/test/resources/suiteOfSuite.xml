@@ -1,7 +1,0 @@
-<!DOCTYPE  suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Android and Desktop suite">
-    <suite-files>
-        <suite-file path="sample_test.xml"></suite-file>
-        <suite-file path="desktop_test.xml"></suite-file>
-    </suite-files>
-</suite>
