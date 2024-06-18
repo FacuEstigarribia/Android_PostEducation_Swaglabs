@@ -1,11 +1,8 @@
 package testsswaglabs;
 
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.android.HeaderMenuComponent;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.HeaderMenuComponentBase;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.components.common.ProductListComponentBase;
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.*;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.common.*;
-import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.CartPage;
 import com.spotify.carina.carina.demo.mobile.gui.pages.swaglabs.pages.android.HomePage;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
@@ -33,6 +30,15 @@ public class SampleTest implements IAbstractTest, IMobileUtils, ILogin {
         Assert.assertTrue(homePage.isPageOpened(), "The Home Page was not open");
     }
 
+    @Test(dependsOnMethods = {"testLogin"})
+    public void testCheckTitleOfProducts(){
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        ProductListComponentBase productListComponent = homePage.getProductListComponent();
+        for(int i = 1; i <= 6; i ++){
+            String aux = productListComponent.getTitleOfSelectedProduct(i);
+            assertEquals(aux, productListComponent.getTitleOfSelectedProduct(i), "The title is not the same that is expected");
+        }
+    }
     @Test(dependsOnMethods = {"testLogin"})
     public void testAddProductToCart(){
 
